@@ -8,7 +8,7 @@ public class BallRotation : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float speed = 150 * Time.deltaTime;
+        float speed = 200 * Time.deltaTime;
         if (direction)
             transform.RotateAround(CenterCircle.transform.position, Vector3.forward, speed);
         else
