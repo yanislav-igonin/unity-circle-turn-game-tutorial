@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class BallScripts : MonoBehaviour
@@ -9,7 +10,7 @@ public class BallScripts : MonoBehaviour
   private void OnTriggerEnter2D(Collider2D collision)
   {
     if (collision.gameObject.tag == "Enemy")
-      score = 0;
+      SceneManager.LoadScene(((byte)Scenes.ScenesEnum.Lose));
     if (collision.gameObject.tag == "Bonus")
       score++;
     Destroy(collision.gameObject);
