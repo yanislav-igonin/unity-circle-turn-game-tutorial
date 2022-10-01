@@ -9,8 +9,10 @@ public class BallScripts : MonoBehaviour
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
-    if (collision.gameObject.tag == "Enemy")
+    if (collision.gameObject.tag == "Enemy") {
       SceneManager.LoadScene(((byte)Scenes.ScenesEnum.Lose));
+      PlayerPrefs.SetInt("Score", score);
+    }
     if (collision.gameObject.tag == "Bonus")
       score++;
     Destroy(collision.gameObject);
