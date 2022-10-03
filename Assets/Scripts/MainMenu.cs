@@ -22,4 +22,9 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(((byte)Scenes.ScenesEnum.Game));
     }
+
+    public void OpenShop()
+    {
+        SceneManager.LoadScene(((byte)Scenes.ScenesEnum.Shop));
+    }
 }
