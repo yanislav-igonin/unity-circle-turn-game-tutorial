@@ -6,6 +6,7 @@ public class BallScripts : MonoBehaviour
 {
   public int score = 0;
   [SerializeField] TextMeshProUGUI scoreText;
+  public bool isMulti;
 
   private void OnTriggerEnter2D(Collider2D collision)
   {
@@ -13,12 +14,18 @@ public class BallScripts : MonoBehaviour
       SceneManager.LoadScene(((byte)Scenes.ScenesEnum.Lose));
       PlayerPrefs.SetInt("Score", score);
     }
-    if (collision.gameObject.tag == "Bonus")
-      score++;
+    if (collision.gameObject.tag == "Bonus") {
+      score = isMulti ? score + 2 : score + 1;
+    }
     Destroy(collision.gameObject);
   }
 
-  void Update()
+  public void Start()
+  {
+    isMulti = PlayerPrefs.GetInt("isMultiBought") == 1;
+  }
+
+  public void Update()
   {
     scoreText.text = score.ToString();
   }
