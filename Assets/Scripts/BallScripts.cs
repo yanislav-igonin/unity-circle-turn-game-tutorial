@@ -8,6 +8,8 @@ public class BallScripts : MonoBehaviour
   [SerializeField] TextMeshProUGUI scoreText;
   public bool isMulti;
 
+  public GameObject bonusEffect;
+
   private void OnTriggerEnter2D(Collider2D collision)
   {
     if (collision.gameObject.tag == "Enemy") {
@@ -16,6 +18,7 @@ public class BallScripts : MonoBehaviour
     }
     if (collision.gameObject.tag == "Bonus") {
       score = isMulti ? score + 2 : score + 1;
+      Instantiate(bonusEffect, transform.position, Quaternion.identity);
     }
     Destroy(collision.gameObject);
   }
